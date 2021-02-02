@@ -41,7 +41,7 @@
             >
               {{ $t("message.close") }}
             </button>
-            <button type="button" class="btn btn-primary" @click="handleSubmit">
+            <button type="button" data-bs-dismiss="modal" class="btn btn-primary" @click="handleSubmit">
               {{ $t("message.login") }}
             </button>
           </div>
@@ -72,8 +72,9 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log(this.userInfo);
+      this.$store.commit('setUserInfo', this.userInfo);
+      console.log(this.$store.state.userInfo);
     },
-  },
+  }
 };
 </script>

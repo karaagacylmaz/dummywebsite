@@ -35,7 +35,7 @@
             <li class="nav-item me-2">
               <LanguageDropdown />
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!isUserExist">
               <button
                 type="button"
                 class="btn btn-primary"
@@ -44,6 +44,9 @@
               >
                 {{ $t("message.login") }}
               </button>
+            </li>
+            <li class="nav-item me-4" v-if="isUserExist">
+              <user-dropdown />
             </li>
           </ul>
         </div>
@@ -63,10 +66,20 @@
 <script>
 import LanguageDropdown from "../components/LocalizationSelect";
 import LoginModal from "../components/LoginModal";
+import UserDropdown from "../components/UserSelect";
 export default {
   components: {
     LanguageDropdown,
     LoginModal,
+    UserDropdown,
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    isUserExist() {
+      return this.$store.state.userInfo.email !== "";
+    },
   },
 };
 </script>

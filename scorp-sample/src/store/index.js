@@ -18,6 +18,14 @@ export default createStore({
     setUserInfo(state, userInfo) {
       state.userInfo = userInfo;
     },
+    removeUserInfo(state) {
+      state.userInfo = {
+        title: "",
+        name: "",
+        email: "",
+        password: "",
+      };
+    },
   },
   actions: {},
   modules: {},
